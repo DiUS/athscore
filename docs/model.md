@@ -1,4 +1,4 @@
-Club
+Organisers
  - Name
  - Address
  - Contact Details (email, phone nums)
@@ -15,14 +15,13 @@ Competition
 Team
   - Name
   - Age
-  - Competition
+  - Competition (ref)
 
 Grade
  - age_group
  - sex
  - name
  - description
- - 
 
 Member
   - name
@@ -45,4 +44,3 @@ Score
   - date
   - value (score)
   - competition (ref)
-  
