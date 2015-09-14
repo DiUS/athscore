@@ -1,4 +1,4 @@
-Organisers
+Organiser
  - Name
  - Address
  - Contact Details (email, phone nums)
@@ -10,9 +10,9 @@ Competition
  - Name (Year)
  - Description
  - Year
- - Club (def)
+ - Organiser (def)
 
-Team
+Team(club)
   - Name
   - Age
   - Competition (ref)
@@ -27,7 +27,6 @@ Member
   - name
   - age
   - description
-  - club
   - team (ref)
   - competition (ref)
 
