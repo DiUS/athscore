@@ -25,9 +25,9 @@ exports.organiser = {
     }
   },
   run: function (api, connection, next) {
-    api.models.Organiser.find(connection.params.id)
-      .then(function (organisers) {
-        connection.response = organisers;
+    api.models.Organiser.findWithComps(connection.params.id)
+      .then(function (organiser) {
+        connection.response = organiser;
         next(true);
       })
       .catch(function (err) {
