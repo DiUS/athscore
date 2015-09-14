@@ -1,0 +1,1 @@
+CREATE DATABASE db_development WITH OWNER = db_development ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;
