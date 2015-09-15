@@ -36,3 +36,19 @@ exports.organiser = {
       });
   }
 };
+
+exports.newOrganiser = {
+  name: "newOrganiser",
+  description: "new org",
+  inputs: {
+    name: {required: true},
+    address: {required: false},
+    contact: {required: false},
+    description: {required: false}
+  },
+  run: function (api, connection, next) {
+    const hash = {name: connection.params.name, address: connection.params.address, contact: connection.params.contact, description: connection.params.description};
+    const newOrg = api.models.Organiser.forge(hash);
+    newOrg.save().then(function() { next(); });
+  }
+};

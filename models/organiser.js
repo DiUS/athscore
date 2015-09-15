@@ -23,7 +23,6 @@ module.exports = function(api) {
       return this.forge({id: id}).fetch(options);
     }
 
-
   });
 
 
