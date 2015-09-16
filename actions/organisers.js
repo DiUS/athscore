@@ -44,15 +44,24 @@ exports.newOrganiser = {
     name: {required: true},
     address: {required: false},
     contact: {required: false},
-    description: {required: false}
+    description: {required: false},
+    competitions: {required: false}
   },
   run: function (api, connection, next) {
-    const hash = {name: connection.params.name, 
+    var hash = {name: connection.params.name, 
                   address: connection.params.address, 
                   contact: connection.params.contact, 
                   description: connection.params.description};
+      
+    console.log(connection.params);
 
-    var newOrg = new api.models.Organiser(hash);
-    newOrg.save().then(function() { next(); });
+    var newOrg = new api.models.Organiser(hash);  
+    newOrg.save().then(function(savedOrg) {
+      var compsHash = JSON.parse(connection.params.competitions);
+      compsHash[0].organiser_id = savedOrg.id;
+
+      var newComp = new api.models.Competition(compsHash[0]);
+      newComp.save().then( function() { next(); }); 
+    });
   }
 };
