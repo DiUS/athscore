@@ -47,8 +47,12 @@ exports.newOrganiser = {
     description: {required: false}
   },
   run: function (api, connection, next) {
-    const hash = {name: connection.params.name, address: connection.params.address, contact: connection.params.contact, description: connection.params.description};
-    const newOrg = api.models.Organiser.forge(hash);
+    const hash = {name: connection.params.name, 
+                  address: connection.params.address, 
+                  contact: connection.params.contact, 
+                  description: connection.params.description};
+
+    var newOrg = new api.models.Organiser(hash);
     newOrg.save().then(function() { next(); });
   }
 };

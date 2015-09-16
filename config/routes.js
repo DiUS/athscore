@@ -4,11 +4,11 @@ exports.default = {
       get: [
         { path: "/users", action: "usersIndex" },
         { path: "/organisers", action: "organisersIndex" },
-        { path: "/organiser/:id", action: "organiser" }
+        { path: "/organisers/:id", action: "organiser" }
       ],
       post: [
-        { path: "/organisers", action: "newOrganiser" }
-      ],
+          { path: "/organisers", action: "newOrganiser" }
+      ]
     }
   }
 }
