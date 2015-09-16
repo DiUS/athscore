@@ -13,14 +13,9 @@ module.exports = {
    * `OrganiserController.create()`
    */
   create: function (req, res) {
-    OrganiserService.persist({
-      name: "thing",
-      address: "address",
-      competitions:[{
-        name: "compname",
-        year : "year2015"
-      }]
-    }).then(function (created) {
+    OrganiserService.persist(
+      req.body
+    ).then(function (created) {
       res.status(201).send(created);
     })
   },
@@ -29,11 +24,11 @@ module.exports = {
   /**
    * `OrganiserController.get()`
    */
-  get: function (req, res) {
-    return res.json({
-      todo: 'get() is not implemented yet!'
-    });
-  },
+    get: function (req, res) {
+        return Organiser.findOne({ id: req.params.id }).then(function (organiser) {
+            return res.json(organiser);
+        });
+    },
 
 
   /**

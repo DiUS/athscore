@@ -37,6 +37,7 @@ module.exports.routes = {
   },
 
   'GET /organisers': 'OrganiserController.getAll',
+  'GET /organisers/:id': 'OrganiserController.get',
   'POST /organisers': 'OrganiserController.create'
 
   /***************************************************************************
