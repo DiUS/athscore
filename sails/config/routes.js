@@ -34,7 +34,10 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'GET /organisers': 'OrganiserController.getAll',
+  'POST /organisers': 'OrganiserController.create'
 
   /***************************************************************************
   *                                                                          *
