@@ -22,21 +22,34 @@ module.exports = {
 
 
   /**
+   * `OrganiserController.update()`
+   */
+  update: function (req, res) {
+    OrganiserService.update(
+      req.params.id,
+      req.body
+    ).then(function (updated) {
+      res.status(200).send(updated);
+    });
+  },
+
+
+  /**
    * `OrganiserController.get()`
    */
     get: function (req, res) {
-        return Organiser.findOne({ id: req.params.id }).then(function (organiser) {
+        return OrganiserService.findOne(req.params.id).then(function (organiser) {
             return res.json(organiser);
         });
     },
 
 
   /**
-   * `OrganiserController.getAll()`
+   * `OrganiserController.list()`
    */
-  getAll: function (req, res) {
-    return Organiser.find().populate('competitions').then(function (organiser) {
-      res.json(organiser);
+  list: function (req, res) {
+    return OrganiserService.list().then(function (organisers) {
+      res.json(organisers);
     });
   }
 };

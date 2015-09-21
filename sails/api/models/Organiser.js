@@ -1,13 +1,15 @@
 module.exports = {
 
-  tableName: 'organisers',
+    tableName: 'organisers',
 
-  attributes: {
-    name:'STRING',
-    address :'STRING',
-    competitions: {
-      collection: 'competition',
-      via: 'organiser_id'
+    attributes: {
+        name         : 'STRING',
+        address      : 'STRING',
+        contact      : 'STRING',
+        description  : 'STRING',
+        competitions : {
+            collection : 'competition',
+            via        : 'organiser'
+        }
     }
-  }
 };

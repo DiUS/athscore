@@ -2,13 +2,14 @@ var Promise = require("bluebird");
 
 module.exports = {
 
-  tableName: 'competitions',
+    tableName: 'competitions',
 
-  attributes: {
-    name:'STRING',
-    year:'STRING',
-    organiser_id: {
-      model: 'organiser'
-    }
-  },
+    attributes: {
+        name         : 'STRING',
+        description  : 'STRING',
+        year         : 'STRING',
+        organiser : {
+            model      : 'organiser'
+        }
+    },
 };

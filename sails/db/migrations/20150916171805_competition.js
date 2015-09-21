@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     t.string("name");
     t.string("description");
     t.string("year");
-    t.integer("organiser_id").references('organisers.id')
+    t.integer("organiser").references('organisers.id')
     t.timestamps();
   });  
 };

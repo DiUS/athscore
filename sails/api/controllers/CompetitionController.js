@@ -13,8 +13,23 @@ module.exports = {
    * `CompetitionController.create()`
    */
   create: function (req, res) {
-    return res.json({
-      todo: 'create() is not implemented yet!'
+    return CompetitionService.persist(
+      req.body
+    ).then(function (created) {
+      res.status(201).send(created);
+    });
+  },
+
+  
+  /**
+   * `CompetitionController.update()`
+   */
+  update: function(req, res) {
+    CompetitionService.update(
+      req.params.id,
+      req.body
+    ).then(function (updated) {
+      res.status(200).send(updated);
     });
   },
 
@@ -23,8 +38,8 @@ module.exports = {
    * `CompetitionController.get()`
    */
   get: function (req, res) {
-    return res.json({
-      todo: 'get() is not implemented yet!'
+    return CompetitionService.findOne(req.params.id).then(function (competition) {
+        return res.json(competition);
     });
   },
 
@@ -32,9 +47,9 @@ module.exports = {
   /**
    * `CompetitionController.getAll()`
    */
-  getAll: function (req, res) {
-    return res.json({
-      todo: 'getAll() is not implemented yet!'
+  list: function (req, res) {
+    return CompetitionService.list().then(function (competitions) {
+      res.json(competitions);
     });
   }
 };

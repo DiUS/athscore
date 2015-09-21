@@ -14,8 +14,9 @@ Competition
 
 Team(club)
   - Name
-  - Age
-  - Competition (ref)
+  - description
+  - age_group
+  - contact
 
 Grade
  - age_group
