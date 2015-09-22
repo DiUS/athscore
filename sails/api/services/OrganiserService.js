@@ -4,7 +4,7 @@ module.exports = {
   persist: function (organiser) {
     return Organiser.create(organiser)
       .then(function (savedOrganiser) {
-        return Organiser.find({ id: savedOrganiser.id }).populateAll();
+        return Organiser.findOne({ id: savedOrganiser.id }).populateAll();
       })
   },
 

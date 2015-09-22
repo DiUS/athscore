@@ -1,6 +1,14 @@
 var Sails = require('sails'),
   sails;
 
+var chai = require("chai");
+chai.config.truncateThreshold = 5000;
+chai.should();
+
+global.Fixtures = {
+  Organiser : require("./fixtures/organiser")
+};
+
 before(function(done) {
 
   // Increase the Mocha timeout so that Sails has enough time to lift.
