@@ -1,0 +1,13 @@
+<h1>ejs time bb!</h1>
+<%- data.length %>
+
+<ul>
+<% for(var i=0; i<data.length; i++) {%>
+   <li><%= data[i].name %></li>
+   <ul>
+       <li><%= data[i].description %></li>
+       <li><%= data[i].address%></li>
+       <li><%= data[i].contact%></li>
+   </ul>
+   <% } %>
+</ul>

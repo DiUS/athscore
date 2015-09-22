@@ -8,6 +8,18 @@
 module.exports = {
 	
 
+  view: function(req, res) {
+    OrganiserService.findOne(req.params.id).then(function(organiser) {
+      res.organiser(organiser);
+    });
+  },
+
+  viewAll: function(req, res) {
+    OrganiserService.list(req.params.id).then(function(organisers) {
+      res.organisers(organisers);
+    });
+  },
+
 
   /**
    * `OrganiserController.create()`

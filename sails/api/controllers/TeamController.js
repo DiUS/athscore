@@ -11,9 +11,7 @@ module.exports = {
    * `TeamController.get()`
    */
   get: function (req, res) {
-    return res.json({
-      todo: 'get() is not implemented yet!'
-    });
+    return res.json(TeamService.find(req.params.id));
   },
 
 
@@ -21,11 +19,9 @@ module.exports = {
    * `TeamController.list()`
    */
   list: function (req, res) {
-    //return Team.find().populateAll().then( function(team) {
-    //    res.json(team);
-    //});
-
-      return res.json(TeamService.find());
+      return TeamService.list().then(function (teams) {
+          res.json(teams);
+      });
   },
 
 
@@ -33,9 +29,11 @@ module.exports = {
    * `TeamController.create()`
    */
   create: function (req, res) {
-    return res.json({
-      todo: 'create() is not implemented yet!'
-    });
+    return TeamService.persist(
+      req.body
+    ).then(function (created) {
+      res.status(201).send(created);
+    })
   },
 
 

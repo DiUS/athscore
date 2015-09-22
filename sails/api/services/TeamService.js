@@ -8,7 +8,11 @@ module.exports = {
       })
   },
 
-  find: function() {
-      return "Foo Ba";
+  find: function(id) {
+      return Team.find({ id: id }).populateAll();
+  },
+
+  list: function() {
+      return Team.find().populateAll();
   }
 };

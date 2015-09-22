@@ -36,5 +36,9 @@
     "url": "git://github.com/matthew/athscore.git"
   },
   "author": "matthew",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "supertest": "^1.1.0"
+  }
 }

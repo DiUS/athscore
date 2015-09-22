@@ -36,15 +36,22 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  'GET /health': 'HealthController.get',
   'GET /organisers': 'OrganiserController.list',
   'GET /organisers/:id': 'OrganiserController.get',
   'POST /organisers': 'OrganiserController.create',
-  'PUT /organisers/:id': 'OrganiserController.update',
   'GET /competitions': 'CompetitionController.list',
+  'PUT /organisers/:id': 'OrganiserController.update',
+  'GET /view/organisers': 'OrganiserController.viewAll',
+  'GET /view/organisers/:id': 'OrganiserController.view',
   'GET /competitions/:id': 'CompetitionController.get',
   'POST /competitions': 'CompetitionController.create',
   'PUT /competitions/:id': 'CompetitionController.update',
-  'GET /teams': 'TeamController.list'
+  'GET /teams': 'TeamController.list',
+  'GET /teams/:id': 'TeamController.get',
+  'POST /teams': 'TeamController.create'
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
