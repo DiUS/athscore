@@ -36,6 +36,14 @@ module.exports.routes = {
     view: 'homepage'
   },
 
+  '/helllo-react': {
+      view: 'helloworld/index-react'
+  },
+
+  '/index-react': function(req, res, next) {
+    res.sendfile(sails.config.appPath + '/assets/index-react.html');
+  },
+ 
   'GET /health': 'HealthController.get',
   'GET /organisers': 'OrganiserController.list',
   'GET /organisers/:id': 'OrganiserController.get',

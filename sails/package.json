@@ -29,6 +29,7 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
+    "jsx": "jsx -x jsx views assets/js",
     "test": "./node_modules/.bin/mocha test/bootstrap.test.js test/**/*Test.js"
   },
   "main": "app.js",
