@@ -1,18 +1,41 @@
-      var HelloWorld = React.createClass({
-        render: function() {
-          return (
-            <p>
-              Hi There!!!, <input type="text" placeholder="Your name here" />!
-              It is {this.props.date.toTimeString()}
-            </p>
-           );
-         }
-      });
+var OrganiserList = React.createClass({
+  getInitialState : function () {
+    return { organisers: [], loadingCount : 0 };
+  },
 
-      setInterval(function() {
-        React.render(
-           <HelloWorld date={new Date()} />,
-           document.getElementById('example')
-        );
-      }, 500);
+  handleClick : function (thing) {
+    console.log("Going to delete", thing);
+    this.setState({loadingCount: this.state.loadingCount + 1});
+    setTimeout(function () {
+      this.setState({loadingCount: this.state.loadingCount - 1});
+    }.bind(this), 1500)
+  },
+
+  componentDidMount: function () {
+    $.get(this.props.source, function (result) {
+      if(this.isMounted()) {
+        this.setState({ organisers: result });
+      }
+    }.bind(this));
+  },
+
+  render: function () {
+    var that = this;
+    return (
+      <div>
+        <Spinner spinning={this.state.loadingCount > 0} src="/images/spinner.gif" />
+        <ul>
+          {this.state.organisers.map(function (thing) {
+            return <li key={thing.id} onClick={that.handleClick.bind(that, thing)}>{thing.name}</li>
+          })}
+        </ul>
+      </div>
+    );
+  }
+});
+
+React.render(
+  <OrganiserList source="/organisers" />,
+  document.getElementById('example')
+);
 

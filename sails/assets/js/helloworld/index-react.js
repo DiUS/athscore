@@ -1,18 +1,41 @@
-      var HelloWorld = React.createClass({displayName: "HelloWorld",
-        render: function() {
-          return (
-            React.createElement("p", null, 
-              "Hi There!!!, ", React.createElement("input", {type: "text", placeholder: "Your name here"}), "!" + ' ' +
-              "It is ", this.props.date.toTimeString()
-            )
-           );
-         }
-      });
+var OrganiserList = React.createClass({displayName: "OrganiserList",
+  getInitialState : function () {
+    return { organisers: [], loadingCount : 0 };
+  },
 
-      setInterval(function() {
-        React.render(
-           React.createElement(HelloWorld, {date: new Date()}),
-           document.getElementById('example')
-        );
-      }, 500);
+  handleClick : function (thing) {
+    console.log("Going to delete", thing);
+    this.setState({loadingCount: this.state.loadingCount + 1});
+    setTimeout(function () {
+      this.setState({loadingCount: this.state.loadingCount - 1});
+    }.bind(this), 1500)
+  },
+
+  componentDidMount: function () {
+    $.get(this.props.source, function (result) {
+      if(this.isMounted()) {
+        this.setState({ organisers: result });
+      }
+    }.bind(this));
+  },
+
+  render: function () {
+    var that = this;
+    return (
+      React.createElement("div", null, 
+        React.createElement(Spinner, {spinning: this.state.loadingCount > 0, src: "/images/spinner.gif"}), 
+        React.createElement("ul", null, 
+          this.state.organisers.map(function (thing) {
+            return React.createElement("li", {key: thing.id, onClick: that.handleClick.bind(that, thing)}, thing.name)
+          })
+        )
+      )
+    );
+  }
+});
+
+React.render(
+  React.createElement(OrganiserList, {source: "/organisers"}),
+  document.getElementById('example')
+);
 
