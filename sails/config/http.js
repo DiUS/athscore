@@ -33,7 +33,7 @@ module.exports.http = {
 
     order: [
        'startRequestTimer',
-//       'jwtcheck',
+       'jwtcheck',
        'cookieParser',
        'session',
        'myRequestLogger',
