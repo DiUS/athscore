@@ -1,0 +1,2 @@
+url : athscore.au.auth0.com 
+client id : zLC87Puc7r6WeMuIl5a95uF9DLKljZbr

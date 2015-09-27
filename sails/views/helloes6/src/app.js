@@ -1,5 +1,4 @@
 import React from 'react';
-import OrganiserList from './organiserlist.jsx';
-var myIndex = require("./app.html");
+import Auth0 from './auth0.jsx';
 
-React.render(<OrganiserList/>, document.getElementById('app'));
+React.render(<Auth0/>, document.getElementById('app'));
